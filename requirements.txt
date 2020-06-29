@@ -1,0 +1,7 @@
+python modules:
+
+1.) pygame
+2.) os
+3.) sys
+4.) neat (neat-python)
+5.) random

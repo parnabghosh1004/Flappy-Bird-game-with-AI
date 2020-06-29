@@ -22,6 +22,7 @@ bg_img = pygame.transform.scale2x(pygame.image.load('gallery/images/background-n
 font = pygame.font.SysFont('comicsans',50)
 font1 = pygame.font.SysFont('comicsans',100)
 font2 = pygame.font.SysFont('comicsans',75)
+font3 = pygame.font.SysFont('comicsans',30)
 
 win = pygame.display.set_mode((win_width,win_height))
 pygame.display.set_caption('Flappy bird')
@@ -167,7 +168,7 @@ def score(bird,pipe,win,font):
             x  = 0
             point.play()
 
-    textobj = font.render(f'Score : {s}',False,(0,0,0))
+    textobj = font3.render(f'Score : {s}',False,(0,0,0))
     win.blit(textobj,(50,50))
 
 def gameStart(bird,ground,pipe):
@@ -189,7 +190,7 @@ def gameStart(bird,ground,pipe):
     score(bird,pipe,win,font)
     
     if IsCollide(bird,pipe,ground):
-        hit.play()
+        hit.play(maxtime=1000)
         die.play(maxtime=1000)
         gamestart = False
         gameover = True
@@ -218,6 +219,7 @@ def gameStartAI(genomes, config):
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_q):
+                pygame.quit()
                 sys.exit()
                 
         if len(birds)>0:
@@ -268,10 +270,12 @@ def gameStartAI(genomes, config):
                     x  = 0
                     point.play()
                     
-            textscore = font.render(f'Score : {s}',False,(0,0,0))
-            textgen = font.render(f'Gen : {gen}',False,(0,0,0))
+            textscore = font3.render(f'Score : {s}',False,(0,0,0))
+            textgen = font3.render(f'Gen : {gen}',False,(0,0,0))
+            textbird = font3.render(f'Birds alive : {len(birds)}',False,(0,0,0))
             win.blit(textscore,(50,50))
             win.blit(textgen,(50,100))
+            win.blit(textbird,(50,150))
             break        
 
         pygame.display.update()
@@ -305,6 +309,7 @@ while not gameclose:
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_q):
+            pygame.quit()
             sys.exit()
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_s:
             gamestart  =True

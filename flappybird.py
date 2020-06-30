@@ -11,9 +11,9 @@ pygame.mixer.init()
 img = pygame.image.load('gallery/images/bluebird-downflap.png')
 w,h = int(1.5*img.get_width()),int(1.5*img.get_height())
 bird_imgs = [
-             pygame.transform.scale(pygame.image.load('gallery/images/bluebird-downflap.png'),(w,h)),
-             pygame.transform.scale(pygame.image.load('gallery/images/bluebird-midflap.png'),(w,h)),
-             pygame.transform.scale(pygame.image.load('gallery/images/bluebird-upflap.png'),(w,h))
+             pygame.transform.scale(pygame.image.load('gallery/images/orangebird-downflap.png'),(w,h)),
+             pygame.transform.scale(pygame.image.load('gallery/images/orangebird-midflap.png'),(w,h)),
+             pygame.transform.scale(pygame.image.load('gallery/images/orangebird-upflap.png'),(w,h))
             ] 
 
 pipe_img = pygame.transform.scale2x(pygame.image.load('gallery/images/pipe-red.png'))
